@@ -1,0 +1,89 @@
+---
+title: "Participant Setup Guide"
+---
+
+Welcome! Before the workshop starts, please work through this page. It should
+take 30–45 minutes, most of which is waiting for installs. The goal: by the
+end, you run one test script and everything prints PASS.
+
+If anything fails and 15 minutes of trying doesn't fix it, send me an email!
+
+## 1. Accounts you need
+
+| Account | Needed for | Cost |
+|---|---|---|
+| [GitHub](https://github.com) | getting course materials | free |
+| OpenRouter API key | all LLM labs (Days 3–5) | **arrives by email from me** — you don't need to sign up |
+| [my.telegram.org](https://my.telegram.org) *(optional)* | live Telegram collection in Lab 2 | free |
+| [ACLED](https://acleddata.com/register/) *(optional)* | live event-data download in Lab 8 | free for academic use |
+
+The two optional accounts unlock the "live" versions of two labs. Every lab
+also runs fully from cached data shipped with the course, so skipping them
+costs you nothing essential.
+
+**Your OpenRouter key:** I will email each of you an API key with a spending
+cap during the workshop. Treat it like a password: don't commit it
+to git or share it with others. The labs read it from an
+environment variable or prompt you for it. The worst thing that could happen is that someone else will use up your credits, but each one is capped, so I won't get a bill for hundreds of dollars.
+
+**Telegram (optional):** if you want to collect Telegram data live, you need a
+Telegram account and API credentials. Log in at
+[my.telegram.org](https://my.telegram.org) → "API development tools" → create
+an app (any name). Note the `api_id` and `api_hash`. This is free and takes
+five minutes; the awkward part is that it requires a phone number attached to
+a Telegram account.
+
+## 2. Pick your computing environment
+
+Choose **one** of the following. If you're unsure, choose Colab
+
+### Option A: Google Colab (free tier is fine)
+
+No installation needed. Each lab notebook has a setup cell that detects Colab and
+installs what it needs. You'll need a Google account and you should be
+comfortable with Colab's quirk of forgetting installed packages between
+sessions (our setup cells handle this).
+
+### Option B: Local conda environment
+
+If you prefer working on your own machine:
+
+```bash
+# clone the repository into a directory you want to work in
+git clone https://github.com/ahalterman/icpsr-pipeline.git
+cd icpsr-pipeline
+# create and activate a conda environment
+conda create -n icpsr python=3.11 -y
+conda activate icpsr
+# install the required packages
+pip install -r setup/requirements.txt
+```
+
+The geospatial packages (`geopandas`, `rioxarray`) are the most likely to cause problems;
+if `pip` fails on your machine, try `conda install -c conda-forge geopandas
+rioxarray` instead.
+
+## 3. Run the test script
+
+From the repo root (Option B; on Colab, run the provided
+`test_environment` notebook instead):
+
+```bash
+export OPENROUTER_API_KEY=sk-or-...   # the key from my email
+python setup/test_environment.py
+```
+
+The script checks three things: package imports, a one-token call to
+OpenRouter (cost: well under a cent), and that every cached dataset loads.
+
+**Screenshot the output and email it to me**, whether or not everything
+passed. That screenshot is your ticket to a smooth Day 1.
+
+## 4. Capstone: start thinking
+
+On Day 1 you'll declare a measurement target for the week-long capstone
+project. The default menu, all on the Ukraine war: **civilian harm**,
+**territorial control**, **infrastructure damage**, or **information
+operations**. You may also bring your own topic (any region, any data source)
+if you can describe what you want to *measure* in one sentence. You don't need to do have
+a different case, but if you're thinking about something for a paper, dissertation, etc, I strongly recommend you work on that (it'll be more engaging and more useful).

@@ -1,0 +1,33 @@
+# Core course requirements (Python 3.11)
+pandas>=2.0
+numpy
+pyarrow
+requests
+beautifulsoup4
+lxml
+openai>=1.0
+tqdm
+matplotlib
+plotly
+scikit-learn
+dateparser
+
+# Geospatial (Day 2)
+geopandas>=0.14
+rioxarray
+shapely
+pystac-client
+planetary-computer
+
+# Images / small models (Day 2-3)
+pillow
+transformers
+torch --index-url https://download.pytorch.org/whl/cpu
+torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# Telegram (Lab 2, optional live collection)
+telethon
+
+# Notebooks
+jupytext
+jupyter

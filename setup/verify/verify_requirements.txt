@@ -1,0 +1,31 @@
+# Dependencies for the lab-verification virtualenv.
+#
+# This is the UNION of every lab's own `!pip install` lines, plus ipykernel so
+# the venv can be a Jupyter kernel. Preinstalling the whole union means each
+# lab's install cell is a satisfied no-op, so a lab that imports something it
+# forgot to declare still surfaces (import_audit.py is what catches that).
+#
+# Unlike ../requirements.txt (the participant env, pinned to the Linux hub's
+# torch CPU wheel index), this list uses default PyPI indexes so it also
+# resolves on macOS. Keep it in sync with the labs' install cells.
+requests
+beautifulsoup4
+lxml
+pandas
+pyarrow
+openai
+matplotlib
+telethon
+nest_asyncio
+geopandas
+rioxarray
+rasterio
+shapely
+transformers
+torch
+torchvision
+pillow
+scikit-learn
+statsmodels
+plotly
+ipykernel
